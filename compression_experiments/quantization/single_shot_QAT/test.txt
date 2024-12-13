@@ -1,0 +1,279 @@
+2024-05-15 16:41:03,059 - root - INFO - AIMET
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /home/jpradovieira/.local/lib/python3.8/site-packages/lpips/weights/v0.1/alex.pth
+aimet_config                   : None
+experiment_config              : experiment_config/PMRID.yml
+dataroot                       : None
+dataroot_lq                    : None
+dataroot_gt                    : None
+seed                           : 42
+adaround_output_path           : dummy_ptq_run/
+gt_suffix                      : None
+lq_suffix                      : None
+input_shape                    : [1, 3, 256, 256]
+results_dir                    : dummy_ptq_run
+Loaded model weights from ./weights/PMRID_denoise.pth
+2024-05-15 16:41:14,748 - Utils - INFO - Running node checkes.
+2024-05-15 16:41:14,748 - Utils - INFO - Graph/Node: PMRID.conv0.conv: Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,748 - Utils - INFO - Graph/Node: PMRID.enc1.0.proj.depthwise: Conv2d(16, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=16, bias=False) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,748 - Utils - INFO - Graph/Node: PMRID.enc1.0.proj.pointwise: Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1)) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,748 - Utils - INFO - Graph/Node: PMRID.enc1.0.conv1.depthwise: Conv2d(16, 16, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=16, bias=False) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.enc1.0.conv1.pointwise: Conv2d(16, 16, kernel_size=(1, 1), stride=(1, 1)) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.enc1.0.conv2.depthwise: Conv2d(16, 16, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=16, bias=False) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.enc1.0.conv2.pointwise: Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1)) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.enc1.1.conv1.pointwise: Conv2d(64, 16, kernel_size=(1, 1), stride=(1, 1)) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.enc1.1.conv2.depthwise: Conv2d(16, 16, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=16, bias=False) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.enc1.1.conv2.pointwise: Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1)) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.dec4.proj_conv.depthwise: Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=16, bias=False) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.dec4.proj_conv.pointwise: Conv2d(16, 16, kernel_size=(1, 1), stride=(1, 1)) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.out0.conv0.depthwise: Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=16, bias=False) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.out0.conv0.pointwise: Conv2d(16, 16, kernel_size=(1, 1), stride=(1, 1)) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.out0.conv1.depthwise: Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=16, bias=False) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.out0.conv1.pointwise: Conv2d(16, 16, kernel_size=(1, 1), stride=(1, 1)) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Graph/Node: PMRID.out1.conv: Conv2d(16, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)) fails check: {'_check_conv_channel_larger_than_32', '_check_conv_channel_32_base'}
+2024-05-15 16:41:14,749 - Utils - INFO - Running pattern checkes.
+2024-05-15 16:41:14,750 - Utils - INFO - ...... subset to store [Conv_14, Relu_15, Conv_16]
+2024-05-15 16:41:14,750 - Utils - INFO - ...... subset to store [Conv_14, Relu_15, Conv_16]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_33, Relu_34, Conv_35]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_33, Relu_34, Conv_35]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_52, Relu_53, Conv_54]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_52, Relu_53, Conv_54]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_61, Relu_62, Conv_63]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_61, Relu_62, Conv_63]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_70, Relu_71, Conv_72]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_70, Relu_71, Conv_72]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_89, Relu_90, Conv_91]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_89, Relu_90, Conv_91]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_98, Relu_99, Conv_100]
+2024-05-15 16:41:14,751 - Utils - INFO - ...... subset to store [Conv_98, Relu_99, Conv_100]
+2024-05-15 16:41:14,752 - Utils - INFO - ...... subset to store [Conv_107, Relu_108, Conv_109]
+2024-05-15 16:41:14,752 - Utils - INFO - ...... subset to store [Conv_107, Relu_108, Conv_109]
+2024-05-15 16:41:14,752 - Utils - INFO - ...... subset to store [Conv_118, Relu_119, Conv_120]
+2024-05-15 16:41:14,752 - Utils - INFO - ...... subset to store [Conv_118, Relu_119, Conv_120]
+2024-05-15 16:41:14,752 - Utils - INFO - ...... subset to store [Conv_131, Relu_132, Conv_133]
+2024-05-15 16:41:14,752 - Utils - INFO - ...... subset to store [Conv_131, Relu_132, Conv_133]
+2024-05-15 16:41:14,752 - Utils - INFO - ...... subset to store [Conv_144, Relu_145, Conv_146]
+2024-05-15 16:41:14,752 - Utils - INFO - ...... subset to store [Conv_144, Relu_145, Conv_146]
+2024-05-15 16:41:14,752 - Utils - INFO - ...... subset to store [Conv_157, Relu_158, Conv_159]
+2024-05-15 16:41:14,752 - Utils - INFO - ...... subset to store [Conv_157, Relu_158, Conv_159]
+2024-05-15 16:41:14,753 - Utils - INFO - ...... subset to store [Conv_170, Relu_171, Conv_172]
+2024-05-15 16:41:14,753 - Utils - INFO - ...... subset to store [Conv_170, Relu_171, Conv_172]
+2024-05-15 16:41:14,753 - Utils - INFO - ...... subset to store [Conv_80, Relu_81, Conv_82]
+2024-05-15 16:41:14,753 - Utils - INFO - ...... subset to store [Conv_80, Relu_81, Conv_82]
+2024-05-15 16:41:14,753 - Utils - INFO - ...... subset to store [Conv_43, Relu_44, Conv_45]
+2024-05-15 16:41:14,753 - Utils - INFO - ...... subset to store [Conv_43, Relu_44, Conv_45]
+2024-05-15 16:41:14,753 - Utils - INFO - ...... subset to store [Conv_24, Relu_25, Conv_26]
+2024-05-15 16:41:14,753 - Utils - INFO - ...... subset to store [Conv_24, Relu_25, Conv_26]
+2024-05-15 16:41:14,753 - Utils - INFO - ...... subset to store [Conv_5, Relu_6, Conv_7]
+2024-05-15 16:41:14,753 - Utils - INFO - ...... subset to store [Conv_5, Relu_6, Conv_7]
+2024-05-15 16:41:14,848 - Utils - INFO - Save arch_checker report to /tmp/arch_checker_report.html
+2024-05-15 16:41:14,865 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc1.0.module_add} 
+2024-05-15 16:41:14,865 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc1.1.module_add_1} 
+2024-05-15 16:41:14,865 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc2.0.module_add_2} 
+2024-05-15 16:41:14,866 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc2.1.module_add_3} 
+2024-05-15 16:41:14,866 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc3.0.module_add_4} 
+2024-05-15 16:41:14,866 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc3.1.module_add_5} 
+2024-05-15 16:41:14,866 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc3.2.module_add_6} 
+2024-05-15 16:41:14,866 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc3.3.module_add_7} 
+2024-05-15 16:41:14,866 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc4.0.module_add_8} 
+2024-05-15 16:41:14,866 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc4.1.module_add_9} 
+2024-05-15 16:41:14,866 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc4.2.module_add_10} 
+2024-05-15 16:41:14,867 - ModelPreparer - INFO - Functional         : Adding new module for node: {enc4.3.module_add_11} 
+2024-05-15 16:41:14,867 - ModelPreparer - INFO - Functional         : Adding new module for node: {dec1.decode_conv.module_add_12} 
+2024-05-15 16:41:14,867 - ModelPreparer - INFO - Functional         : Adding new module for node: {dec1.module_add_13} 
+2024-05-15 16:41:14,867 - ModelPreparer - INFO - Functional         : Adding new module for node: {dec2.decode_conv.module_add_14} 
+2024-05-15 16:41:14,867 - ModelPreparer - INFO - Functional         : Adding new module for node: {dec2.module_add_15} 
+2024-05-15 16:41:14,867 - ModelPreparer - INFO - Functional         : Adding new module for node: {dec3.decode_conv.module_add_16} 
+2024-05-15 16:41:14,867 - ModelPreparer - INFO - Functional         : Adding new module for node: {dec3.module_add_17} 
+2024-05-15 16:41:14,867 - ModelPreparer - INFO - Functional         : Adding new module for node: {dec4.decode_conv.module_add_18} 
+2024-05-15 16:41:14,868 - ModelPreparer - INFO - Functional         : Adding new module for node: {dec4.module_add_19} 
+2024-05-15 16:41:14,868 - ModelPreparer - INFO - Functional         : Adding new module for node: {out0.module_add_20} 
+2024-05-15 16:41:14,868 - ModelPreparer - INFO - Functional         : Adding new module for node: {module_add_21} 
+2024-05-15 16:41:14,873 - Utils - INFO - Running validator check <function validate_for_reused_modules at 0x7f2c03c1e8b0>
+2024-05-15 16:41:14,884 - Utils - INFO - Running validator check <function validate_for_missing_modules at 0x7f2c03c1ed30>
+2024-05-15 16:41:15,512 - Utils - INFO - All validation checks passed.
+odict_keys(['experiment_name', 'model_name', 'model_type', 'device', 'task', 'scale', 'num_gpu', 'manual_seed', 'datasets', 'network_g', 'path', 'train', 'val', 'ptq', 'logger', 'dist_params'])
+Pre-PTQ Analyzer time: 0.0018296241760253906
+541
+541
+Eval results before PTQ : {'PSNR': tensor(29.7648, device='cuda:0'), 'SSIM': tensor(0.8179, device='cuda:0'), 'LPIPS': tensor(0.1921, device='cuda:0')}
+Evaluation on 541 time : 12.2540283203125
+2024-05-15 16:41:28,396 - BatchNormFolding - INFO - 0 BatchNorms' weights got converted
+Folding Batch Norms time: 0.6279399394989014
+2024-05-15 16:41:29,194 - BatchNormFolding - INFO - 0 BatchNorms' weights got converted
+2024-05-15 16:41:30,554 - Quant - INFO - High Bias folding is not supported for models without BatchNorm Layers
+Layer Equalization time: 2.167302370071411
+2024-05-15 16:41:31,257 - Quant - INFO - No config file provided, defaulting to config file at /home/jpradovieira/.local/lib/python3.8/site-packages/aimet_common/quantsim_config/default_config.json
+2024-05-15 16:41:31,260 - Quant - INFO - Unsupported op type Squeeze
+2024-05-15 16:41:31,260 - Quant - INFO - Unsupported op type Mean
+2024-05-15 16:41:31,274 - Utils - INFO - ...... subset to store [Conv_0, Relu_1]
+2024-05-15 16:41:31,274 - Utils - INFO - ...... subset to store [Add_10, Relu_11]
+2024-05-15 16:41:31,274 - Utils - INFO - ...... subset to store [Conv_14, Relu_15]
+2024-05-15 16:41:31,274 - Utils - INFO - ...... subset to store [Add_19, Relu_20]
+2024-05-15 16:41:31,274 - Utils - INFO - ...... subset to store [Add_29, Relu_30]
+2024-05-15 16:41:31,274 - Utils - INFO - ...... subset to store [Conv_33, Relu_34]
+2024-05-15 16:41:31,274 - Utils - INFO - ...... subset to store [Add_38, Relu_39]
+2024-05-15 16:41:31,274 - Utils - INFO - ...... subset to store [Add_48, Relu_49]
+2024-05-15 16:41:31,274 - Utils - INFO - ...... subset to store [Conv_52, Relu_53]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Add_57, Relu_58]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Conv_61, Relu_62]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Add_66, Relu_67]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Conv_70, Relu_71]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Add_75, Relu_76]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Add_85, Relu_86]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Conv_89, Relu_90]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Add_94, Relu_95]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Conv_98, Relu_99]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Add_103, Relu_104]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Conv_107, Relu_108]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Add_112, Relu_113]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Conv_115, Relu_116]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Conv_118, Relu_119]
+2024-05-15 16:41:31,275 - Utils - INFO - ...... subset to store [Conv_131, Relu_132]
+2024-05-15 16:41:31,276 - Utils - INFO - ...... subset to store [Conv_144, Relu_145]
+2024-05-15 16:41:31,276 - Utils - INFO - ...... subset to store [Conv_157, Relu_158]
+2024-05-15 16:41:31,276 - Utils - INFO - ...... subset to store [Conv_170, Relu_171]
+2024-05-15 16:41:31,276 - Utils - INFO - ...... subset to store [Conv_80, Relu_81]
+2024-05-15 16:41:31,276 - Utils - INFO - ...... subset to store [Conv_126, Relu_127]
+2024-05-15 16:41:31,276 - Utils - INFO - ...... subset to store [Conv_43, Relu_44]
+2024-05-15 16:41:31,276 - Utils - INFO - ...... subset to store [Conv_139, Relu_140]
+2024-05-15 16:41:31,276 - Utils - INFO - ...... subset to store [Conv_24, Relu_25]
+2024-05-15 16:41:31,276 - Utils - INFO - ...... subset to store [Conv_152, Relu_153]
+2024-05-15 16:41:31,276 - Utils - INFO - ...... subset to store [Conv_5, Relu_6]
+2024-05-15 16:41:31,276 - Utils - INFO - ...... subset to store [Conv_165, Relu_166]
+2024-05-15 16:41:31,277 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:default
+2024-05-15 16:41:33,309 - Utils - INFO - Caching 32 batches from data loader at path location: /tmp/adaround/
+2024-05-15 16:41:33,320 - Quant - INFO - Started Optimizing weight rounding of module: conv0.conv
+2024-05-15 16:41:34,865 - Quant - INFO - Started Optimizing weight rounding of module: enc1.0.proj.depthwise
+2024-05-15 16:41:36,128 - Quant - INFO - Started Optimizing weight rounding of module: enc1.0.proj.pointwise
+2024-05-15 16:41:37,630 - Quant - INFO - Started Optimizing weight rounding of module: enc1.0.conv1.depthwise
+2024-05-15 16:41:39,157 - Quant - INFO - Started Optimizing weight rounding of module: enc1.0.conv1.pointwise
+2024-05-15 16:41:40,209 - Quant - INFO - Started Optimizing weight rounding of module: enc1.0.conv2.depthwise
+2024-05-15 16:41:41,254 - Quant - INFO - Started Optimizing weight rounding of module: enc1.0.conv2.pointwise
+2024-05-15 16:41:42,887 - Quant - INFO - Started Optimizing weight rounding of module: enc1.1.conv1.depthwise
+2024-05-15 16:41:45,626 - Quant - INFO - Started Optimizing weight rounding of module: enc1.1.conv1.pointwise
+2024-05-15 16:41:47,659 - Quant - INFO - Started Optimizing weight rounding of module: enc1.1.conv2.depthwise
+2024-05-15 16:41:49,343 - Quant - INFO - Started Optimizing weight rounding of module: enc1.1.conv2.pointwise
+2024-05-15 16:41:51,568 - Quant - INFO - Started Optimizing weight rounding of module: enc2.0.proj.depthwise
+2024-05-15 16:41:53,868 - Quant - INFO - Started Optimizing weight rounding of module: enc2.0.proj.pointwise
+2024-05-15 16:41:55,969 - Quant - INFO - Started Optimizing weight rounding of module: enc2.0.conv1.depthwise
+2024-05-15 16:41:58,598 - Quant - INFO - Started Optimizing weight rounding of module: enc2.0.conv1.pointwise
+2024-05-15 16:42:00,448 - Quant - INFO - Started Optimizing weight rounding of module: enc2.0.conv2.depthwise
+2024-05-15 16:42:02,255 - Quant - INFO - Started Optimizing weight rounding of module: enc2.0.conv2.pointwise
+2024-05-15 16:42:04,371 - Quant - INFO - Started Optimizing weight rounding of module: enc2.1.conv1.depthwise
+2024-05-15 16:42:07,097 - Quant - INFO - Started Optimizing weight rounding of module: enc2.1.conv1.pointwise
+2024-05-15 16:42:09,405 - Quant - INFO - Started Optimizing weight rounding of module: enc2.1.conv2.depthwise
+2024-05-15 16:42:11,480 - Quant - INFO - Started Optimizing weight rounding of module: enc2.1.conv2.pointwise
+2024-05-15 16:42:13,939 - Quant - INFO - Started Optimizing weight rounding of module: enc3.0.proj.depthwise
+2024-05-15 16:42:16,318 - Quant - INFO - Started Optimizing weight rounding of module: enc3.0.proj.pointwise
+2024-05-15 16:42:18,690 - Quant - INFO - Started Optimizing weight rounding of module: enc3.0.conv1.depthwise
+2024-05-15 16:42:21,248 - Quant - INFO - Started Optimizing weight rounding of module: enc3.0.conv1.pointwise
+2024-05-15 16:42:23,425 - Quant - INFO - Started Optimizing weight rounding of module: enc3.0.conv2.depthwise
+2024-05-15 16:42:25,587 - Quant - INFO - Started Optimizing weight rounding of module: enc3.0.conv2.pointwise
+2024-05-15 16:42:27,872 - Quant - INFO - Started Optimizing weight rounding of module: enc3.1.conv1.depthwise
+2024-05-15 16:42:30,419 - Quant - INFO - Started Optimizing weight rounding of module: enc3.1.conv1.pointwise
+2024-05-15 16:42:32,881 - Quant - INFO - Started Optimizing weight rounding of module: enc3.1.conv2.depthwise
+2024-05-15 16:42:35,247 - Quant - INFO - Started Optimizing weight rounding of module: enc3.1.conv2.pointwise
+2024-05-15 16:42:37,698 - Quant - INFO - Started Optimizing weight rounding of module: enc3.2.conv1.depthwise
+2024-05-15 16:42:40,443 - Quant - INFO - Started Optimizing weight rounding of module: enc3.2.conv1.pointwise
+2024-05-15 16:42:43,060 - Quant - INFO - Started Optimizing weight rounding of module: enc3.2.conv2.depthwise
+2024-05-15 16:42:45,496 - Quant - INFO - Started Optimizing weight rounding of module: enc3.2.conv2.pointwise
+2024-05-15 16:42:48,086 - Quant - INFO - Started Optimizing weight rounding of module: enc3.3.conv1.depthwise
+2024-05-15 16:42:50,939 - Quant - INFO - Started Optimizing weight rounding of module: enc3.3.conv1.pointwise
+2024-05-15 16:42:53,653 - Quant - INFO - Started Optimizing weight rounding of module: enc3.3.conv2.depthwise
+2024-05-15 16:42:56,243 - Quant - INFO - Started Optimizing weight rounding of module: enc3.3.conv2.pointwise
+2024-05-15 16:42:58,976 - Quant - INFO - Started Optimizing weight rounding of module: enc4.0.proj.depthwise
+2024-05-15 16:43:01,711 - Quant - INFO - Started Optimizing weight rounding of module: enc4.0.proj.pointwise
+2024-05-15 16:43:04,483 - Quant - INFO - Started Optimizing weight rounding of module: enc4.0.conv1.depthwise
+2024-05-15 16:43:07,311 - Quant - INFO - Started Optimizing weight rounding of module: enc4.0.conv1.pointwise
+2024-05-15 16:43:10,001 - Quant - INFO - Started Optimizing weight rounding of module: enc4.0.conv2.depthwise
+2024-05-15 16:43:12,894 - Quant - INFO - Started Optimizing weight rounding of module: enc4.0.conv2.pointwise
+2024-05-15 16:43:16,298 - Quant - INFO - Started Optimizing weight rounding of module: enc4.1.conv1.depthwise
+2024-05-15 16:43:19,507 - Quant - INFO - Started Optimizing weight rounding of module: enc4.1.conv1.pointwise
+2024-05-15 16:43:22,887 - Quant - INFO - Started Optimizing weight rounding of module: enc4.1.conv2.depthwise
+2024-05-15 16:43:25,871 - Quant - INFO - Started Optimizing weight rounding of module: enc4.1.conv2.pointwise
+2024-05-15 16:43:28,863 - Quant - INFO - Started Optimizing weight rounding of module: enc4.2.conv1.depthwise
+2024-05-15 16:43:32,000 - Quant - INFO - Started Optimizing weight rounding of module: enc4.2.conv1.pointwise
+2024-05-15 16:43:35,153 - Quant - INFO - Started Optimizing weight rounding of module: enc4.2.conv2.depthwise
+2024-05-15 16:43:38,228 - Quant - INFO - Started Optimizing weight rounding of module: enc4.2.conv2.pointwise
+2024-05-15 16:43:41,360 - Quant - INFO - Started Optimizing weight rounding of module: enc4.3.conv1.depthwise
+2024-05-15 16:43:44,912 - Quant - INFO - Started Optimizing weight rounding of module: enc4.3.conv1.pointwise
+2024-05-15 16:43:47,953 - Quant - INFO - Started Optimizing weight rounding of module: enc4.3.conv2.depthwise
+2024-05-15 16:43:50,970 - Quant - INFO - Started Optimizing weight rounding of module: enc4.3.conv2.pointwise
+2024-05-15 16:43:54,276 - Quant - INFO - Started Optimizing weight rounding of module: encdec.depthwise
+2024-05-15 16:43:57,590 - Quant - INFO - Started Optimizing weight rounding of module: encdec.pointwise
+2024-05-15 16:44:00,922 - Quant - INFO - Started Optimizing weight rounding of module: dec1.decode_conv.conv0.depthwise
+2024-05-15 16:44:04,184 - Quant - INFO - Started Optimizing weight rounding of module: dec1.decode_conv.conv0.pointwise
+2024-05-15 16:44:07,422 - Quant - INFO - Started Optimizing weight rounding of module: dec1.decode_conv.conv1.depthwise
+2024-05-15 16:44:10,711 - Quant - INFO - Started Optimizing weight rounding of module: dec1.decode_conv.conv1.pointwise
+2024-05-15 16:44:14,019 - Quant - INFO - Started Optimizing weight rounding of module: dec1.upsample
+2024-05-15 16:44:17,429 - Quant - INFO - Started Optimizing weight rounding of module: dec1.proj_conv.depthwise
+2024-05-15 16:44:21,142 - Quant - INFO - Started Optimizing weight rounding of module: dec1.proj_conv.pointwise
+2024-05-15 16:44:24,935 - Quant - INFO - Started Optimizing weight rounding of module: dec2.decode_conv.conv0.depthwise
+2024-05-15 16:44:29,716 - Quant - INFO - Started Optimizing weight rounding of module: dec2.decode_conv.conv0.pointwise
+2024-05-15 16:44:33,816 - Quant - INFO - Started Optimizing weight rounding of module: dec2.decode_conv.conv1.depthwise
+2024-05-15 16:44:37,407 - Quant - INFO - Started Optimizing weight rounding of module: dec2.decode_conv.conv1.pointwise
+2024-05-15 16:44:40,963 - Quant - INFO - Started Optimizing weight rounding of module: dec2.upsample
+2024-05-15 16:44:44,879 - Quant - INFO - Started Optimizing weight rounding of module: dec2.proj_conv.depthwise
+2024-05-15 16:44:50,794 - Quant - INFO - Started Optimizing weight rounding of module: dec2.proj_conv.pointwise
+2024-05-15 16:44:55,209 - Quant - INFO - Started Optimizing weight rounding of module: dec3.decode_conv.conv0.depthwise
+2024-05-15 16:44:59,324 - Quant - INFO - Started Optimizing weight rounding of module: dec3.decode_conv.conv0.pointwise
+2024-05-15 16:45:04,487 - Quant - INFO - Started Optimizing weight rounding of module: dec3.decode_conv.conv1.depthwise
+2024-05-15 16:45:09,118 - Quant - INFO - Started Optimizing weight rounding of module: dec3.decode_conv.conv1.pointwise
+2024-05-15 16:45:13,016 - Quant - INFO - Started Optimizing weight rounding of module: dec3.upsample
+2024-05-15 16:45:17,787 - Quant - INFO - Started Optimizing weight rounding of module: dec3.proj_conv.depthwise
+2024-05-15 16:45:23,556 - Quant - INFO - Started Optimizing weight rounding of module: dec3.proj_conv.pointwise
+2024-05-15 16:45:29,972 - Quant - INFO - Started Optimizing weight rounding of module: dec4.decode_conv.conv0.depthwise
+2024-05-15 16:45:36,469 - Quant - INFO - Started Optimizing weight rounding of module: dec4.decode_conv.conv0.pointwise
+2024-05-15 16:45:43,549 - Quant - INFO - Started Optimizing weight rounding of module: dec4.decode_conv.conv1.depthwise
+2024-05-15 16:45:49,740 - Quant - INFO - Started Optimizing weight rounding of module: dec4.decode_conv.conv1.pointwise
+2024-05-15 16:45:55,901 - Quant - INFO - Started Optimizing weight rounding of module: dec4.upsample
+2024-05-15 16:46:02,368 - Quant - INFO - Started Optimizing weight rounding of module: dec4.proj_conv.depthwise
+2024-05-15 16:46:09,960 - Quant - INFO - Started Optimizing weight rounding of module: dec4.proj_conv.pointwise
+2024-05-15 16:46:18,174 - Quant - INFO - Started Optimizing weight rounding of module: out0.conv0.depthwise
+2024-05-15 16:46:25,805 - Quant - INFO - Started Optimizing weight rounding of module: out0.conv0.pointwise
+2024-05-15 16:46:34,534 - Quant - INFO - Started Optimizing weight rounding of module: out0.conv1.depthwise
+2024-05-15 16:46:42,544 - Quant - INFO - Started Optimizing weight rounding of module: out0.conv1.pointwise
+2024-05-15 16:46:51,525 - Quant - INFO - Started Optimizing weight rounding of module: out1.conv
+2024-05-15 16:46:59,738 - Quant - INFO - Deleting model inputs from location: /tmp/adaround/
+2024-05-15 16:46:59,795 - Quant - INFO - Completed Adarounding Model
+Adaround time: 329.2280225753784
+2024-05-15 16:47:01,726 - Quant - INFO - No config file provided, defaulting to config file at /home/jpradovieira/.local/lib/python3.8/site-packages/aimet_common/quantsim_config/default_config.json
+2024-05-15 16:47:01,732 - Quant - INFO - Unsupported op type Squeeze
+2024-05-15 16:47:01,733 - Quant - INFO - Unsupported op type Mean
+2024-05-15 16:47:01,766 - Utils - INFO - ...... subset to store [Conv_0, Relu_1]
+2024-05-15 16:47:01,766 - Utils - INFO - ...... subset to store [Add_10, Relu_11]
+2024-05-15 16:47:01,766 - Utils - INFO - ...... subset to store [Conv_14, Relu_15]
+2024-05-15 16:47:01,766 - Utils - INFO - ...... subset to store [Add_19, Relu_20]
+2024-05-15 16:47:01,767 - Utils - INFO - ...... subset to store [Add_29, Relu_30]
+2024-05-15 16:47:01,767 - Utils - INFO - ...... subset to store [Conv_33, Relu_34]
+2024-05-15 16:47:01,767 - Utils - INFO - ...... subset to store [Add_38, Relu_39]
+2024-05-15 16:47:01,767 - Utils - INFO - ...... subset to store [Add_48, Relu_49]
+2024-05-15 16:47:01,767 - Utils - INFO - ...... subset to store [Conv_52, Relu_53]
+2024-05-15 16:47:01,767 - Utils - INFO - ...... subset to store [Add_57, Relu_58]
+2024-05-15 16:47:01,768 - Utils - INFO - ...... subset to store [Conv_61, Relu_62]
+2024-05-15 16:47:01,768 - Utils - INFO - ...... subset to store [Add_66, Relu_67]
+2024-05-15 16:47:01,768 - Utils - INFO - ...... subset to store [Conv_70, Relu_71]
+2024-05-15 16:47:01,768 - Utils - INFO - ...... subset to store [Add_75, Relu_76]
+2024-05-15 16:47:01,768 - Utils - INFO - ...... subset to store [Add_85, Relu_86]
+2024-05-15 16:47:01,768 - Utils - INFO - ...... subset to store [Conv_89, Relu_90]
+2024-05-15 16:47:01,768 - Utils - INFO - ...... subset to store [Add_94, Relu_95]
+2024-05-15 16:47:01,769 - Utils - INFO - ...... subset to store [Conv_98, Relu_99]
+2024-05-15 16:47:01,769 - Utils - INFO - ...... subset to store [Add_103, Relu_104]
+2024-05-15 16:47:01,769 - Utils - INFO - ...... subset to store [Conv_107, Relu_108]
+2024-05-15 16:47:01,769 - Utils - INFO - ...... subset to store [Add_112, Relu_113]
+2024-05-15 16:47:01,769 - Utils - INFO - ...... subset to store [Conv_115, Relu_116]
+2024-05-15 16:47:01,769 - Utils - INFO - ...... subset to store [Conv_118, Relu_119]
+2024-05-15 16:47:01,770 - Utils - INFO - ...... subset to store [Conv_131, Relu_132]
+2024-05-15 16:47:01,770 - Utils - INFO - ...... subset to store [Conv_144, Relu_145]
+2024-05-15 16:47:01,770 - Utils - INFO - ...... subset to store [Conv_157, Relu_158]
+2024-05-15 16:47:01,770 - Utils - INFO - ...... subset to store [Conv_170, Relu_171]
+2024-05-15 16:47:01,770 - Utils - INFO - ...... subset to store [Conv_80, Relu_81]
+2024-05-15 16:47:01,771 - Utils - INFO - ...... subset to store [Conv_126, Relu_127]
+2024-05-15 16:47:01,771 - Utils - INFO - ...... subset to store [Conv_43, Relu_44]
+2024-05-15 16:47:01,771 - Utils - INFO - ...... subset to store [Conv_139, Relu_140]
+2024-05-15 16:47:01,771 - Utils - INFO - ...... subset to store [Conv_24, Relu_25]
+2024-05-15 16:47:01,771 - Utils - INFO - ...... subset to store [Conv_152, Relu_153]
+2024-05-15 16:47:01,771 - Utils - INFO - ...... subset to store [Conv_5, Relu_6]
+2024-05-15 16:47:01,772 - Utils - INFO - ...... subset to store [Conv_165, Relu_166]
+2024-05-15 16:47:01,772 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:default
