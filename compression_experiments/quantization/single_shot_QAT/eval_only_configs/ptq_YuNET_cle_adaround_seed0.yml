@@ -1,0 +1,127 @@
+# ------------------------------------------------------------------------
+# Copyright (c) 2022 megvii-model. All Rights Reserved.
+# ------------------------------------------------------------------------
+# Modified from BasicSR (https://github.com/xinntao/BasicSR)
+# Copyright 2018-2020 BasicSR Authors
+# ------------------------------------------------------------------------
+# general settings
+experiment_name: ptq_independent_YuNET_cle_adaround_rescaled_seed0
+model_name : indPipelinedYuNET
+yunet_config : ptq_configs/pipelined_yunet_n.py
+model_type: SingleStageDetector
+aimet_analyze : false
+original_model_onnx_export : false
+device: cuda
+task: Detection
+scale: 1
+num_gpu: 1
+manual_seed: 10
+
+enhancers : 
+  denoise: 
+    pretrain_network_g: ./experiment_results/PMRIDd2-denoise_cle_adaround_rescaled_seed1/ptq_quantsim_checkpoint
+  LLE:
+    pretrain_network_g: ./experiment_results/PMRIDd2-LLE_cle_adaround_rescaled_seed1/ptq_quantsim_checkpoint
+  detector:
+    pretrain_network_g: ./experiment_results/YuNET_cle_adaround_seed0/ptq_quantsim_checkpoint
+datasets:
+  unlabeled_dataset:
+    dataroot: logynthetic/test
+    lq_suffix: '1_noisy'
+  adaround_dataset:
+    dataroot: logynthetic/test
+    lq_suffix: '1_noisy'
+  train:
+    name: SIDD
+    type: PairedImageDataset
+    dataroot: train
+    gt_suffix: '0'
+    lq_suffix: '1_noisy'
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+    #mini_batch_sizes : [32]
+    dataset_size: 3500
+    gt_size: 256
+    use_flip: false
+    use_rot: false
+
+  # data loader
+  dataloader:
+    shuffle: true
+    batch_size: 8
+    #prefetch_factor: None
+
+  eval:
+    dataroot: logynthetic/test
+    gt_suffix: '1_noisy'
+    labels_path: logynthetic/test_labels
+
+network_g:
+  type: PMRIDd2
+
+# path
+path:
+  pretrain_network_g: ./weights/yunet_n_retrained.pth
+  strict_load_g: true
+  resume_state: ~
+
+# training settings
+train:
+  num_epochs: 5
+  optimizer:
+    type: AdamW
+    lr: !!float 1e-4
+    weight_decay: 0.
+    betas: [0.9, 0.9]
+
+  scheduler:
+    type: MultiStepLR
+    milestones : [3, 6, 9,15]
+    gamma : 0.1
+
+  total_iters: 50000
+  warmup_iter: -1 # no warm up
+
+  # losses
+  pixel_opt:
+    type: PSNRLoss
+    loss_weight: 1
+    reduction: mean
+
+# validation settings
+val:
+  val_freq: !!float 2e4
+  save_img: false
+  use_image: false
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+
+# PTQ configs
+
+ptq: 
+  bnf: false
+  cle: false
+  adaround: false
+
+# logging settings
+logger:
+  print_freq: 1
+  save_checkpoint_freq: !!float 5e3
+  use_tb_logger: true
+  wandb:
+    project: ~
+    resume_id: ~
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500
