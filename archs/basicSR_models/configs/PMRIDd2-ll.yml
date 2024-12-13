@@ -1,0 +1,58 @@
+# ------------------------------------------------------------------------
+# Copyright (c) 2022 megvii-model. All Rights Reserved.
+# ------------------------------------------------------------------------
+# Modified from BasicSR (https://github.com/xinntao/BasicSR)
+# Copyright 2018-2020 BasicSR Authors
+# ------------------------------------------------------------------------
+# general settings
+name: PMRID-Logynthetic_ll
+is_train: false
+dist: false
+model_type: ImageRestorationModel
+scale: 1
+num_gpu: 0 # set num_gpu: 0 for cpu mode
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+
+  val:
+    name: Logynthetic_val_ll
+    type: PairedImageDataset
+
+    dataroot_gt: ./datasets/Logynthetic/ll
+    dataroot_lq: ./datasets/Logynthetic/ll_noisy
+
+    io_backend:
+      type: disk
+
+# network structures
+network_g:
+  type: PMRIDd2
+
+# path
+path:
+  pretrain_network_g: models/weights/PMRIDd2-low-light_rescaled.pth
+  strict_load_g: true
+  resume_state: ~
+
+# validation settings
+val:
+  save_img: true
+  grids: false
+  use_image: false
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500
