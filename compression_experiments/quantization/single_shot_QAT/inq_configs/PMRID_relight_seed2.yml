@@ -1,0 +1,118 @@
+# ------------------------------------------------------------------------
+# Copyright (c) 2022 megvii-model. All Rights Reserved.
+# ------------------------------------------------------------------------
+# Modified from BasicSR (https://github.com/xinntao/BasicSR)
+# Copyright 2018-2020 BasicSR Authors
+# ------------------------------------------------------------------------
+# general settings
+experiment_name: inq_PMRIDd2-LLE_rescaled_seed2
+model_name : PMRIDd2
+model_type: ImageRestorationModel
+aimet_analyze : false
+original_model_onnx_export : true
+device: cuda
+task: Restoration
+scale: 1
+num_gpu: 1
+manual_seed: 333
+
+datasets:
+  unlabeled_dataset:
+    dataroot: logynthetic/calibration/
+    lq_suffix: '1'
+  adaround_dataset:
+    dataroot: logynthetic/calibration/
+    lq_suffix: '1'
+  train:
+    name: SIDD
+    type: PairedImageDataset
+    dataroot: logynthetic/train
+    size: 3500
+    gt_suffix: '0'
+    lq_suffix: '1'
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+    #mini_batch_sizes : [32]
+    gt_size: 256
+    use_flip: false
+    use_rot: false
+
+  # data loader
+  dataloader:
+    shuffle: true
+    batch_size: 8
+    #prefetch_factor: None
+
+  eval:
+    dataroot: logynthetic/test
+    gt_suffix: '0'
+    lq_suffix: '1'
+
+
+network_g:
+  type: PMRIDd2
+
+# path
+path:
+  pretrain_network_g: ./inq_weights/inq_lle_seed2.pth
+  strict_load_g: true
+  resume_state: ~
+
+# training settings
+train:
+  optimizer:
+    type: AdamW
+    lr: !!float 1e-4
+    weight_decay: 0.
+    betas: [0.9, 0.9]
+
+  scheduler:
+    type: CosineAnnealingLR
+
+
+  total_iters: 17500
+  warmup_iter: -1 # no warm up
+
+  # losses
+  pixel_opt:
+    type: PSNRLoss
+    loss_weight: 1
+    reduction: mean
+
+# validation settings
+val:
+  val_freq: !!float 2e4
+  save_img: false
+  use_image: false
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+
+# PTQ configs
+
+ptq: 
+  bnf: false
+  cle: false
+  adaround: false
+
+# logging settings
+logger:
+  print_freq: 1
+  save_checkpoint_freq: !!float 5e3
+  use_tb_logger: true
+  wandb:
+    project: ~
+    resume_id: ~
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500
